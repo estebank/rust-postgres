@@ -16,7 +16,7 @@ impl FromSql for json::Json {
                 return Err("unsupported JSONB encoding version".into());
             }
         }
-        json::Json::from_reader(&mut raw).map_err(Into::into)
+        json::Json::from_slice(&mut raw).map_err(Into::into)
     }
 
     accepts!(JSON, JSONB);

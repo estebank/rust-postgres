@@ -16,7 +16,7 @@ impl FromSql for Value {
                 return Err("unsupported JSONB encoding version".into());
             }
         }
-        serde_json::de::from_reader(raw).map_err(Into::into)
+        serde_json::de::from_slice(raw).map_err(Into::into)
     }
 
     accepts!(JSON, JSONB);
